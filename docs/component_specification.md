@@ -12,6 +12,12 @@ Output: 5 recipes for creating dishes with available ingredients, ranked accordi
 ## Context Manager 
 
 ## Recipe Vector Database
+Input: Dataframe with textual recipe data
+Output: A vector DB of recipes that can be used for RAG searches.
+
+## User Interface 
+Input: User preferences, user images
+Output: Top 5 Recipes (each recipe has its ingredients, instructions, nutritional value, and recipe link attached)
 
 
 ## Data Sources
@@ -20,3 +26,6 @@ Output: 5 recipes for creating dishes with available ingredients, ranked accordi
 - Recipe1M+ (images + recipe data)
 - RecipeNLG (https://www.kaggle.com/datasets/paultimothymooney/recipenlg)
   - Builds on Recipe1M+ data. We don't need image embeddings in our vector DB, so this seems ideal.
+ 
+2. Ingredient image Data Scources:
+- 
