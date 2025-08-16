@@ -20,12 +20,12 @@ Trickier: Object Detection Model
 ## Context Manager 
 
 ## Recipe Vector Database
-**Input**: Dataframe with textual recipe data
+**Input**: Dataframe with textual recipe data  
 **Output**: A vector DB of recipes that can be used for RAG searches.
 
 ## User Interface 
-Input: User preferences, user images
-Output: Top 5 Recipes (each recipe has its ingredients, instructions, nutritional value, and recipe link attached)
+**Input**: User preferences, user images  
+**Output**: Top 5 Recipes (each recipe has its ingredients, instructions, nutritional value, and recipe link attached)
 
 
 ## Data Sources
