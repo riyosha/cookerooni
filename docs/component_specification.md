@@ -2,11 +2,11 @@
 
 ## Ingredient Identifier
 We have two options here:
-Easier: Image Classification Model
+Easier: Image Classification Model   
 **Input**: User uploaded images of each separate ingredient    
 **Output**: JSON formatted listed of ingredients classified with their nutritional value.   
 
-Trickier: Object Detection Model
+Trickier: Object Detection Model   
 **Input**: 1 or few user uploaded images with multiple ingredients in an image.
 **Output**: JSON formatted listed of ingredients with their (i) quantity (hard), (ii) nutritional value.   
 
