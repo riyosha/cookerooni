@@ -9,7 +9,7 @@ Easier: Image Classification Model
 Trickier: Object Detection Model   
 **Input**: 1 or few user uploaded images with multiple ingredients in an image.
 **Output**: JSON formatted listed of ingredients with their (i) quantity (hard), (ii) nutritional value.   
-
+https://www.researchgate.net/publication/386028730_Recognizing_Multiple_Ingredients_in_Food_Images_Using_a_Single-Ingredient_Classification_Model
 
 
 ## Recipe Provider  
