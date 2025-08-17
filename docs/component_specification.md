@@ -11,17 +11,14 @@ Trickier: Object Detection Model
 **Output**: JSON formatted listed of ingredients with their (i) quantity (hard), (ii) nutritional value.   
 https://www.researchgate.net/publication/386028730_Recognizing_Multiple_Ingredients_in_Food_Images_Using_a_Single-Ingredient_Classification_Model
 
+## Recipe Vector Database
+**Input**: Dataframe with textual recipe data  
+**Output**: A vector DB of recipes that can be used for RAG searches.
 
 ## Recipe Provider  
 **Input**: (i) JSON formatted listed of ingredients with their quantity, nutritional value.  
 (ii) User preferences (like prioritization of recipe time or recipe nutrition)   
 **Output**: 5 recipes for creating dishes with available ingredients, ranked according to user preferences.
-
-## Context Manager 
-
-## Recipe Vector Database
-**Input**: Dataframe with textual recipe data  
-**Output**: A vector DB of recipes that can be used for RAG searches.
 
 ## User Interface 
 **Input**: User preferences, user images  
