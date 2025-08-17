@@ -1,4 +1,4 @@
-Cookerooni!
+# Cookerooni!
 
 <p align="center">
     <img src="assets/Logo.png" alt="Logo" border="0">
