@@ -1,5 +1,7 @@
 faiss-cpu
+matplotlib
 openai
 pandas
 pinecone-client # can only install with pip
 sentence-transformers
+
