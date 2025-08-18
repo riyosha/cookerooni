@@ -17,3 +17,16 @@
 [2025-08-17 16:09:16,614: INFO: SentenceTransformer]: Use pytorch device_name: mps
 [2025-08-17 16:09:16,615: INFO: SentenceTransformer]: Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
 [2025-08-17 16:26:23,644: WARNING: chat_models]: Unexpected argument 'model_name' provided to ChatGoogleGenerativeAI. Did you mean: 'model'?
+[2025-08-17 19:48:06,641: INFO: SentenceTransformer]: Use pytorch device_name: mps
+[2025-08-17 19:48:06,642: INFO: SentenceTransformer]: Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+[2025-08-17 20:09:05,200: INFO: SentenceTransformer]: Use pytorch device_name: mps
+[2025-08-17 20:09:05,201: INFO: SentenceTransformer]: Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+[2025-08-17 20:09:08,903: INFO: posthog]: Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+[2025-08-17 20:11:35,977: INFO: SentenceTransformer]: Use pytorch device_name: mps
+[2025-08-17 20:11:35,979: INFO: SentenceTransformer]: Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+[2025-08-17 20:14:26,786: INFO: SentenceTransformer]: Use pytorch device_name: mps
+[2025-08-17 20:14:26,788: INFO: SentenceTransformer]: Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+[2025-08-17 20:15:10,238: INFO: SentenceTransformer]: Use pytorch device_name: mps
+[2025-08-17 20:15:10,239: INFO: SentenceTransformer]: Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+[2025-08-17 20:27:22,913: INFO: SentenceTransformer]: Use pytorch device_name: mps
+[2025-08-17 20:27:22,914: INFO: SentenceTransformer]: Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
