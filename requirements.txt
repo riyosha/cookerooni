@@ -1,7 +1,13 @@
+chromadb
 faiss-cpu
+gdown
+google-generativeai
+langchain
+langchain-community
 matplotlib
 openai
 pandas
 pinecone-client # can only install with pip
+pyarrow
 sentence-transformers
 
