@@ -1,0 +1,6 @@
+chromadb==1.0.17
+langchain==0.3.27
+langchain-community==0.3.27
+matplotlib==3.10.0
+pyarrow==20.0.0
+sentence-transformers==5.1.0
