@@ -4,7 +4,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.chains import RetrievalQA, LLMChain
 from langchain.schema import BaseRetriever
 from .config import secrets, models, params
-from .prompts import RECIPE_PROMPT, SYSTEM_PROMPT
+from .prompts import RECIPE_PROMPT, SYSTEM_PROMPT, PREFERENCE_PROMPT
 
 
 def get_gemini_llm():
@@ -45,3 +45,12 @@ def create_retrieval_qa_chain(retriever: BaseRetriever):
         chain_type_kwargs={"prompt": RECIPE_PROMPT},
         return_source_documents=True,
     )
+
+
+def create_preference_parsing_chain():
+    """
+    Create an LLMChain for parsing user preferences into structured JSON.
+    """
+    llm = get_gemini_llm()
+
+    return LLMChain(llm=llm, prompt=PREFERENCE_PROMPT)

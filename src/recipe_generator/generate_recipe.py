@@ -3,7 +3,7 @@ from typing import Any, Dict, Optional
 from langchain.chains import LLMChain
 
 from .vectorstore import load_chroma
-from .chains import create_recipe_chain, get_gemini_llm
+from .chains import create_recipe_chain, create_preference_parsing_chain, get_gemini_llm
 from .config import params
 from .utils import build_context_block
 import pandas as pd
@@ -29,19 +29,43 @@ def _ensure_json_object(text: str) -> Dict[str, Any]:
     return obj
 
 
-def generate_recipe(
-    user_ingredients: str, max_minutes: int, k: int = 20
+def parse_preferences(user_request: str):
+    """
+    Parses a natural language user request into structured JSON.
+    """
+    preference_chain: LLMChain = create_preference_parsing_chain()
+    raw_json = preference_chain.run({"user_request": user_request})
+    if raw_json.strip().startswith("```"):
+        raw_json = raw_json.strip().strip("`").strip("json").strip()
+    try:
+        return json.loads(raw_json)
+    except json.JSONDecodeError:
+        raise ValueError(f"Invalid JSON returned by LLM: {raw_json}")
+
+
+def generate_recipe_from_request(
+    user_request: str,
+    k: int = 20,
+    max_minutes: Optional[int] = None,
 ) -> Dict[str, Any]:
     """
-    Retrieve relevant recipes and synthesize a single recipe as structured JSON.
+    Natural-language RAG:
+    1) Parse user preferences from request
+    2) Retrieve relevant recipes from vectorstore
+    3) Build context from neighbors
+    4) Generate JSON recipe with LLM
     """
     vector_db = load_chroma()
-    retrieved_docs = vector_db.similarity_search(user_ingredients, k=k)
+    prefs = parse_preferences(user_request)
+    ingredients = prefs.get("ingredients", [])
+    minutes = prefs.get("max_minutes", max_minutes if max_minutes is not None else 60)
+    servings = prefs.get("servings", 2)
+    nutrition = prefs.get("nutrition", {})
 
-    # Build a small pandas frame to reuse context builder
-    rows = []
-    for d in retrieved_docs:
-        m = d.metadata
+    docs = vector_db.similarity_search(", ".join(ingredients), k=k)
+    rows: list = []
+    for d in docs:
+        m = d.metadata or {}
         rows.append(
             {
                 "name": m.get("name"),
@@ -51,15 +75,16 @@ def generate_recipe(
                 "nutrition": m.get("nutrition"),
             }
         )
-    context_str = build_context_block(pd.DataFrame(rows))
+    context = build_context_block(pd.DataFrame(rows))
 
-    # Run LLM chain
     recipe_chain: LLMChain = create_recipe_chain()
     response_text: str = recipe_chain.run(
         {
-            "context": context_str,
-            "user_ingredients": user_ingredients,
-            "max_minutes": max_minutes,
+            "context": context,
+            "user_ingredients": ", ".join(ingredients),
+            "max_minutes": minutes,
+            "servings": servings,
+            "nutrition": nutrition,
         }
     )
 
