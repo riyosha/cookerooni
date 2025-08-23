@@ -8,7 +8,6 @@ from src import logger
 load_dotenv()
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-logger.info(f"Project root set to: {PROJECT_ROOT}")
 
 
 @dataclass(frozen=True)
@@ -38,6 +37,7 @@ class Params:
     top_k: int = int(os.getenv("TOP_K", "5"))
     generator_max_tokens: int = int(os.getenv("GEN_MAX_TOKENS", "700"))
     generator_temperature: float = float(os.getenv("GEN_TEMPERATURE", "0.2"))
+    batch_size: int = int(os.getenv("BATCH_SIZE", "32"))
 
 
 @dataclass(frozen=True)
@@ -54,9 +54,8 @@ models = Models()
 params = Params()
 data_sources = DataSources()
 
-
-# Ensure directories exist
-paths.data_raw.mkdir(parents=True, exist_ok=True)
-logger.info(f"Data directory set to: {paths.data_raw}")
-params.persist_directory.mkdir(parents=True, exist_ok=True)
-logger.info(f"Vectorstore directory set to: {params.persist_directory}")
+if __name__ == "__main__":
+    paths.data_raw.mkdir(parents=True, exist_ok=True)
+    logger.info(f"Data directory set to: {paths.data_raw}")
+    params.persist_directory.mkdir(parents=True, exist_ok=True)
+    logger.info(f"Vectorstore directory set to: {params.persist_directory}")
