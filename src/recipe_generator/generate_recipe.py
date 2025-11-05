@@ -9,7 +9,7 @@ from .utils import build_context_block
 import pandas as pd
 
 
-def _ensure_json_object(text: str) -> Dict[str, Any]:
+def ensure_json_object(text: str) -> Dict[str, Any]:
     """
     Parse and lightly validate the LLM's JSON output.
     If the LLM returns extra text, try to find the first/last braces.
@@ -88,4 +88,4 @@ def generate_recipe_from_request(
         }
     )
 
-    return _ensure_json_object(response_text)
+    return ensure_json_object(response_text)
