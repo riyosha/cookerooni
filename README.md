@@ -83,18 +83,37 @@ Once you have the source code, create a virtual environment using the following 
 Enter the virtual environment and install dependancies using `pip install -r requirements.txt`.
 
 ## Usage
+## 1. Data Ingestion
+Run the following command to download data the Food.com dataset:
+```bash
+python -m src.recipe_generator.data_ingestion
+```
+This will be stored under Data/Food directory.
 
-<!--- Provide instructions on how to use the application after installing it --->
+## 2. Build a ChromaDB vectorstore
+Run the following command to buld a persistent ChromaDB vectorstore:
+```bash
+python -m src.recipe_generator.build_vectorstore
+```
+This will be stored as Data/vectorstore
 
-To launch the file, use the following command, `python3 app.py`.
+## 3. Run the recipe generator
+Run the following to launch the server:
+```bash
+uvicorn src.app:app --reload --host 127.0.0.1 --port 8000
+```
+and the following to POST a request:
+```bash 
+curl -X POST "http://127.0.0.1:8000/generate" \
+  -H "Content-Type: application/json" \
+  -d '{"prompt": "Give me a quick recipe with kidney beans, tomatoes, coriander, onions, rices and some spices."}'
+```
 
-<!--- You can also add in screenshots, app demo (Gif format) or even provide link to other resources --->
 
 ### Project demo
 
-![Project demo](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMTJlODMxMDg0ZWJjOGFmNTdjYzczZTMwZTIyNzM3YTExZWMxMzM2OCZjdD1n/wwg1suUiTbCY8H8vIA/giphy-downsized-large.gif)
 
-You can also find the demo video [here](https://www.youtube.com/watch?v=dQw4w9WgXcQ).
+
 
 ## Contributing
 
